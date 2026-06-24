@@ -1,259 +1,641 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Seyed Reza Abdipour Mehrian — MD · MPH</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=Inter:wght@300;400;500;600&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    /* ── TOKENS ─────────────────────────────────────── */
+    :root {
+      --ink:        #0f1117;
+      --ink-mid:    #3a3d4a;
+      --ink-soft:   #6b7080;
+      --rule:       #dde0e8;
+      --surface:    #f7f8fc;
+      --white:      #ffffff;
+      --accent:     #1a56db;   /* medical / clinical blue */
+      --accent-lt:  #e8effe;
+      --teal:       #0e9e8e;   /* research / data teal */
+      --teal-lt:    #e5f7f5;
 
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+      --serif: 'DM Serif Display', Georgia, serif;
+      --sans:  'Inter', system-ui, sans-serif;
+      --mono:  'JetBrains Mono', monospace;
 
-<title>Dr. Seyed Reza Abdipour Mehrian</title>
+      --max: 900px;
+      --pad: clamp(1.25rem, 5vw, 3rem);
+    }
 
-<meta name="description" content="MD, MPH | Clinical Research | EMR Systems | Healthcare AI | Research Portal">
-<meta name="keywords" content="Reza Abdipour, Clinical Research, EMR, Healthcare AI, Publications">
+    /* ── RESET ──────────────────────────────────────── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: var(--sans);
+      background: var(--white);
+      color: var(--ink);
+      font-size: 15px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+    a { color: var(--accent); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+    ul { list-style: none; }
 
-<style>
+    /* ── LAYOUT SHELL ───────────────────────────────── */
+    .wrap { max-width: var(--max); margin: 0 auto; padding: 0 var(--pad); }
 
-body{
-  margin:0;
-  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial;
-  background:#0b1220;
-  color:#e5e7eb;
-  scroll-behavior:smooth;
-}
+    /* ── NAV ────────────────────────────────────────── */
+    nav {
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(255,255,255,.88);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--rule);
+    }
+    .nav-inner {
+      max-width: var(--max); margin: 0 auto;
+      padding: .75rem var(--pad);
+      display: flex; align-items: center; justify-content: space-between; gap: 1rem;
+    }
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      color: var(--ink);
+      letter-spacing: -.01em;
+    }
+    .nav-links { display: flex; gap: 1.5rem; flex-wrap: wrap; }
+    .nav-links a {
+      font-size: .8rem; font-weight: 500; letter-spacing: .06em;
+      text-transform: uppercase; color: var(--ink-soft);
+      transition: color .15s;
+    }
+    .nav-links a:hover { color: var(--accent); text-decoration: none; }
 
-header{
-  position:sticky;
-  top:0;
-  background:#0b1220dd;
-  backdrop-filter: blur(10px);
-  padding:12px 20px;
-  display:flex;
-  justify-content:space-between;
-  border-bottom:1px solid #1f2a44;
-}
+    /* ── HERO ───────────────────────────────────────── */
+    header {
+      padding: clamp(4rem, 10vw, 7rem) var(--pad) clamp(3rem, 7vw, 5rem);
+      max-width: var(--max); margin: 0 auto;
+    }
+    .hero-eyebrow {
+      font-family: var(--mono);
+      font-size: .75rem; letter-spacing: .12em; text-transform: uppercase;
+      color: var(--teal);
+      margin-bottom: 1.25rem;
+    }
+    .hero-name {
+      font-family: var(--serif);
+      font-size: clamp(2.4rem, 6vw, 3.8rem);
+      line-height: 1.1;
+      letter-spacing: -.02em;
+      color: var(--ink);
+    }
+    .hero-name em { font-style: italic; color: var(--accent); }
+    .hero-title {
+      margin-top: .75rem;
+      font-size: 1.05rem; font-weight: 300;
+      color: var(--ink-mid);
+      letter-spacing: .01em;
+    }
+    .hero-divider {
+      width: 48px; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--teal));
+      border-radius: 2px;
+      margin: 1.75rem 0;
+    }
+    .hero-bio {
+      max-width: 600px;
+      font-size: .95rem; line-height: 1.8;
+      color: var(--ink-mid);
+    }
+    .hero-links {
+      margin-top: 2rem;
+      display: flex; gap: .75rem; flex-wrap: wrap;
+    }
+    .badge {
+      display: inline-flex; align-items: center; gap: .4rem;
+      padding: .45rem .9rem;
+      border-radius: 6px;
+      font-size: .78rem; font-weight: 500;
+      border: 1px solid var(--rule);
+      color: var(--ink-mid);
+      transition: border-color .15s, color .15s;
+    }
+    .badge:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+    .badge svg { width: 14px; height: 14px; }
 
-header a{
-  color:#93c5fd;
-  margin:0 10px;
-  text-decoration:none;
-  font-size:14px;
-}
+    /* ── STATS BAR ──────────────────────────────────── */
+    .stats-bar {
+      background: var(--surface);
+      border-top: 1px solid var(--rule);
+      border-bottom: 1px solid var(--rule);
+    }
+    .stats-inner {
+      max-width: var(--max); margin: 0 auto;
+      padding: 1.5rem var(--pad);
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+      gap: 1.5rem;
+    }
+    .stat { text-align: center; }
+    .stat-num {
+      font-family: var(--serif);
+      font-size: 2rem; line-height: 1;
+      color: var(--accent);
+    }
+    .stat-label {
+      font-size: .73rem; font-weight: 500; letter-spacing: .07em;
+      text-transform: uppercase; color: var(--ink-soft);
+      margin-top: .3rem;
+    }
 
-.container{
-  max-width:1000px;
-  margin:auto;
-  padding:40px 20px;
-}
+    /* ── SECTION ────────────────────────────────────── */
+    section {
+      padding: clamp(3rem, 7vw, 5rem) var(--pad);
+      max-width: var(--max); margin: 0 auto;
+      border-bottom: 1px solid var(--rule);
+    }
+    section:last-of-type { border-bottom: none; }
 
-/* HERO */
-.hero{
-  display:flex;
-  gap:30px;
-  flex-wrap:wrap;
-  align-items:center;
-  padding-top:20px;
-}
+    .section-label {
+      font-family: var(--mono);
+      font-size: .7rem; letter-spacing: .14em; text-transform: uppercase;
+      color: var(--ink-soft);
+      margin-bottom: 2rem;
+      display: flex; align-items: center; gap: .75rem;
+    }
+    .section-label::after {
+      content: ''; flex: 1; height: 1px; background: var(--rule);
+    }
 
-img{
-  width:170px;
-  height:170px;
-  border-radius:18px;
-  object-fit:cover;
-  border:3px solid #38bdf8;
-}
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.7rem; line-height: 1.2;
+      margin-bottom: 1.75rem;
+      color: var(--ink);
+    }
 
-h1{
-  margin:0;
-  font-size:32px;
-}
+    /* ── EDUCATION ──────────────────────────────────── */
+    .edu-grid { display: grid; gap: 1.25rem; }
+    .edu-card {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: .75rem 1.25rem;
+      padding: 1.25rem 1.5rem;
+      background: var(--surface);
+      border-radius: 10px;
+      border: 1px solid var(--rule);
+    }
+    .edu-icon {
+      width: 36px; height: 36px;
+      background: var(--accent-lt);
+      border-radius: 8px;
+      display: flex; align-items: center; justify-content: center;
+      flex-shrink: 0; margin-top: .15rem;
+    }
+    .edu-icon svg { width: 18px; height: 18px; color: var(--accent); }
+    .edu-degree { font-weight: 600; font-size: .95rem; color: var(--ink); }
+    .edu-inst { font-size: .85rem; color: var(--ink-mid); margin-top: .15rem; }
+    .edu-meta {
+      grid-column: 2;
+      display: flex; gap: .5rem; flex-wrap: wrap; margin-top: .4rem;
+    }
+    .chip {
+      font-family: var(--mono);
+      font-size: .7rem;
+      padding: .2rem .55rem;
+      border-radius: 4px;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      color: var(--ink-soft);
+    }
+    .chip.accent { background: var(--accent-lt); border-color: var(--accent); color: var(--accent); }
+    .chip.teal { background: var(--teal-lt); border-color: var(--teal); color: var(--teal); }
 
-.sub{
-  color:#93c5fd;
-  margin-top:6px;
-}
+    /* ── EXPERIENCE ─────────────────────────────────── */
+    .timeline { display: grid; gap: 0; position: relative; }
+    .timeline::before {
+      content: '';
+      position: absolute; left: 11px; top: 8px; bottom: 8px;
+      width: 1px; background: var(--rule);
+    }
+    .tl-item {
+      display: grid;
+      grid-template-columns: 24px 1fr;
+      gap: 0 1.25rem;
+      padding-bottom: 2.25rem;
+      position: relative;
+    }
+    .tl-item:last-child { padding-bottom: 0; }
+    .tl-dot {
+      width: 23px; height: 23px;
+      background: var(--white);
+      border: 2px solid var(--accent);
+      border-radius: 50%;
+      flex-shrink: 0;
+      margin-top: .25rem;
+      position: relative; z-index: 1;
+    }
+    .tl-dot.teal { border-color: var(--teal); }
+    .tl-period {
+      font-family: var(--mono);
+      font-size: .7rem; color: var(--ink-soft);
+      margin-bottom: .3rem;
+    }
+    .tl-role { font-weight: 600; font-size: .95rem; color: var(--ink); }
+    .tl-org { font-size: .85rem; color: var(--ink-mid); margin-top: .1rem; }
+    .tl-desc {
+      font-size: .85rem; line-height: 1.7;
+      color: var(--ink-soft); margin-top: .6rem;
+    }
 
-/* SECTION */
-section{
-  margin-top:70px;
-}
+    /* ── PUBLICATIONS ───────────────────────────────── */
+    .pub-list { display: grid; gap: .85rem; }
+    .pub-item {
+      padding: 1rem 1.25rem;
+      border-left: 3px solid var(--rule);
+      background: var(--surface);
+      border-radius: 0 8px 8px 0;
+      transition: border-color .15s;
+    }
+    .pub-item:hover { border-color: var(--accent); }
+    .pub-title { font-size: .88rem; font-weight: 500; color: var(--ink); line-height: 1.5; }
+    .pub-meta {
+      font-size: .77rem; color: var(--ink-soft);
+      margin-top: .35rem; display: flex; gap: .5rem; flex-wrap: wrap; align-items: center;
+    }
+    .pub-journal { color: var(--teal); font-weight: 500; }
+    .pub-year { font-family: var(--mono); }
 
-h2{
-  border-left:4px solid #38bdf8;
-  padding-left:10px;
-}
+    /* ── SKILLS ─────────────────────────────────────── */
+    .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1rem; }
+    .skill-group {
+      padding: 1.25rem 1.5rem;
+      background: var(--surface);
+      border-radius: 10px;
+      border: 1px solid var(--rule);
+    }
+    .skill-group-title {
+      font-size: .7rem; font-weight: 600; letter-spacing: .1em;
+      text-transform: uppercase; color: var(--ink-soft);
+      margin-bottom: .75rem;
+    }
+    .skill-tags { display: flex; flex-wrap: wrap; gap: .4rem; }
+    .stag {
+      font-size: .77rem; padding: .25rem .6rem;
+      border-radius: 5px;
+      background: var(--white);
+      border: 1px solid var(--rule);
+      color: var(--ink-mid);
+    }
 
-/* CARD */
-.card{
-  background:#111a2e;
-  padding:18px;
-  border-radius:14px;
-  margin-top:12px;
-}
+    /* ── CONTACT ────────────────────────────────────── */
+    .contact-grid {
+      display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;
+    }
+    @media (max-width: 500px) { .contact-grid { grid-template-columns: 1fr; } }
+    .contact-item {
+      display: flex; align-items: center; gap: .75rem;
+      padding: .9rem 1.25rem;
+      background: var(--surface);
+      border-radius: 8px;
+      border: 1px solid var(--rule);
+      font-size: .85rem; color: var(--ink-mid);
+      transition: border-color .15s;
+    }
+    .contact-item:hover { border-color: var(--accent); color: var(--accent); text-decoration: none; }
+    .contact-item svg { width: 16px; height: 16px; flex-shrink: 0; color: var(--ink-soft); }
 
-/* GRID */
-.grid{
-  display:grid;
-  grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
-  gap:12px;
-}
+    /* ── FOOTER ─────────────────────────────────────── */
+    footer {
+      text-align: center; padding: 2.5rem var(--pad);
+      font-size: .78rem; color: var(--ink-soft);
+      border-top: 1px solid var(--rule);
+    }
 
-/* BUTTON */
-.btn{
-  display:inline-block;
-  margin-top:10px;
-  padding:10px 14px;
-  border-radius:10px;
-  background:#38bdf8;
-  color:#001018;
-  text-decoration:none;
-  font-weight:600;
-}
+    /* ── RESPONSIVE ─────────────────────────────────── */
+    @media (max-width: 600px) {
+      .nav-links { gap: 1rem; }
+      .edu-card { grid-template-columns: 1fr; }
+      .edu-meta { grid-column: 1; }
+    }
 
-/* PUBLICATION */
-.pub{
-  margin-bottom:14px;
-  line-height:1.5;
-}
-
-/* SMALL TEXT */
-.small{
-  color:#94a3b8;
-  font-size:13px;
-}
-
-</style>
-
+    /* ── SCROLL REVEAL ──────────────────────────────── */
+    .reveal { opacity: 0; transform: translateY(18px); transition: opacity .5s, transform .5s; }
+    .reveal.visible { opacity: 1; transform: none; }
+  </style>
 </head>
-
 <body>
 
-<header>
-  <div><b>Reza Abdipour</b></div>
-  <div>
-    <a href="#about">About</a>
-    <a href="#metrics">Metrics</a>
-    <a href="#pubs">Publications</a>
-    <a href="#projects">Projects</a>
-    <a href="#contact">Contact</a>
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-inner">
+    <span class="nav-name">Reza Abdipour Mehrian</span>
+    <div class="nav-links">
+      <a href="#education">Education</a>
+      <a href="#experience">Experience</a>
+      <a href="#publications">Publications</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ── HERO ── -->
+<header class="reveal">
+  <p class="hero-eyebrow">Physician · Researcher · Epidemiologist</p>
+  <h1 class="hero-name">Seyed Reza<br><em>Abdipour Mehrian</em></h1>
+  <p class="hero-title">MD · MPH &nbsp;|&nbsp; Clinical Research · Public Health · Data Science</p>
+  <div class="hero-divider"></div>
+  <p class="hero-bio">
+    Physician-scientist at the intersection of clinical medicine, epidemiology, and health data science. 
+    Currently managing the Clinical Research Development Center at Amir Oncology Hospital, 
+    Shiraz University of Medical Sciences — building evidence-based systems that bridge hospital data 
+    and patient outcomes.
+  </p>
+  <div class="hero-links">
+    <a class="badge" href="mailto:Reza.abdipour96@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      Email
+    </a>
+    <a class="badge" href="https://scholar.google.com/citations?user=RE72N8EAAAAJ&hl=en" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10H2M12 2v20M2 2h20v20H2z"/></svg>
+      Google Scholar
+    </a>
+    <a class="badge" href="https://www.linkedin.com/in/seyed-reza-abdipour-mehrian-225ab8143/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a class="badge" href="https://github.com/Rezabdipour" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      GitHub
+    </a>
+    <a class="badge" href="https://orcid.org/0000-0002-4447-4131" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><circle cx="12" cy="12" r="10"/><text x="6" y="16" font-size="10" fill="white" font-family="sans-serif">iD</text></svg>
+      ORCID
+    </a>
+    <a class="badge" href="https://www.researchgate.net/profile/Seyed-Reza-Abdipour-Mehrian" target="_blank">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><path d="M9 9h4a3 3 0 0 1 0 6h-4V9zm4 6v3"/></svg>
+      ResearchGate
+    </a>
   </div>
 </header>
 
-<div class="container">
-
-<!-- HERO -->
-<div class="hero">
-  <img src="profile.png">
-
-  <div>
-    <h1>Dr. Seyed Reza Abdipour Mehrian</h1>
-    <div class="sub">
-      MD • MPH | Clinical Research | EMR Systems | Healthcare AI
+<!-- ── STATS ── -->
+<div class="stats-bar reveal">
+  <div class="stats-inner">
+    <div class="stat">
+      <div class="stat-num">19</div>
+      <div class="stat-label">Publications</div>
     </div>
-
-    <a class="btn" href="cv.pdf">Download CV</a>
+    <div class="stat">
+      <div class="stat-num">4</div>
+      <div class="stat-label">Conference Presentations</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">3</div>
+      <div class="stat-label">Active Grants</div>
+    </div>
+    <div class="stat">
+      <div class="stat-num">MD+MPH</div>
+      <div class="stat-label">Dual Degree</div>
+    </div>
   </div>
 </div>
 
-<!-- ABOUT -->
-<section id="about">
-<h2>About</h2>
-<div class="card">
-Physician and clinical researcher specializing in healthcare digital transformation, hospital informatics, EMR systems, and data-driven clinical decision support systems.
-</div>
+<!-- ── EDUCATION ── -->
+<section id="education" class="reveal">
+  <p class="section-label">Academic Background</p>
+  <div class="edu-grid">
+    <div class="edu-card">
+      <div class="edu-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c3 3 9 3 12 0v-5"/></svg>
+      </div>
+      <div>
+        <div class="edu-degree">M.S. Master of Public Health</div>
+        <div class="edu-inst">Shiraz University of Medical Sciences, Iran</div>
+      </div>
+      <div class="edu-meta">
+        <span class="chip">Oct 2015 – Feb 2023</span>
+        <span class="chip accent">GPA 17.50 / 20</span>
+        <span class="chip teal">Epidemiology & Biostatistics</span>
+      </div>
+    </div>
+    <div class="edu-card">
+      <div class="edu-icon">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M8 21h8M12 21V3M4 7l8-4 8 4v6a8 8 0 0 1-16 0z"/></svg>
+      </div>
+      <div>
+        <div class="edu-degree">M.D. Doctor of Medicine</div>
+        <div class="edu-inst">Shiraz University of Medical Sciences, Iran</div>
+      </div>
+      <div class="edu-meta">
+        <span class="chip">Oct 2014 – Jan 2022</span>
+        <span class="chip accent">GPA 17.60 / 20</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- METRICS -->
-<section id="metrics">
-<h2>Research Impact</h2>
-
-<div class="grid">
-
-<div class="card">
-<b>19+</b><br>
-Publications
-</div>
-
-<div class="card">
-<b>4+</b><br>
-Research Grants
-</div>
-
-<div class="card">
-<b>3+</b><br>
-International Conferences
-</div>
-
-<div class="card">
-<b>5+</b><br>
-Years Leadership
-</div>
-
-</div>
+<!-- ── EXPERIENCE ── -->
+<section id="experience" class="reveal">
+  <p class="section-label">Academic Experience</p>
+  <div class="timeline">
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div>
+        <div class="tl-period">Nov 2024 – Present</div>
+        <div class="tl-role">Clinical Research Development Center (ACRDC) Manager</div>
+        <div class="tl-org">Amir Oncology Hospital · Shiraz University of Medical Sciences</div>
+        <p class="tl-desc">
+          Leading applied research initiatives to improve quality of care at the oncology hospital. 
+          Key projects include implementation of an electronic medical record system, a drug-drug interaction 
+          clinical decision support system, a hospital-based cancer registry, and a patient decision aid web 
+          tool built on social media text mining.
+        </p>
+      </div>
+    </div>
+    <div class="tl-item">
+      <div class="tl-dot teal"></div>
+      <div>
+        <div class="tl-period">Feb 2022 – Oct 2024</div>
+        <div class="tl-role">Postdoctoral Research Assistant</div>
+        <div class="tl-org">Health Policy Research Center · Shiraz University of Medical Sciences</div>
+        <p class="tl-desc">
+          Conducted stakeholder analysis and social network analysis to make complementary and alternative 
+          medicine (traditional Persian medicine) more evidence-based — published in BMC Complementary 
+          Medicine and Therapies.
+        </p>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- PUBLICATIONS -->
-<section id="pubs">
-<h2>Selected Publications</h2>
+<!-- ── PUBLICATIONS ── -->
+<section id="publications" class="reveal">
+  <p class="section-label">Selected Publications</p>
+  <div class="pub-list">
 
-<div class="card">
+    <div class="pub-item">
+      <div class="pub-title">How Similar Are Drug Data and Disease Self-report? Estimating the Prevalence of Chronic Diseases in Less Developed Settings</div>
+      <div class="pub-meta"><span class="pub-journal">Archives of Iranian Medicine</span><span class="pub-year">2024</span></div>
+    </div>
 
-<div class="pub">
-<b>Drug Data vs Self-report Accuracy</b><br>
-Arch Iran Med (2024)
-</div>
+    <div class="pub-item">
+      <div class="pub-title">Evidence-based practice in traditional Persian medicine: a stakeholder and social network analysis</div>
+      <div class="pub-meta"><span class="pub-journal">BMC Complementary Medicine and Therapies</span><span class="pub-year">2024</span></div>
+    </div>
 
-<div class="pub">
-<b>Evidence-Based Traditional Persian Medicine</b><br>
-BMC Complementary Medicine (2024)
-</div>
+    <div class="pub-item">
+      <div class="pub-title">Aspergillus-related immune reconstitution inflammatory syndrome in pediatric cancer patients: clinical characteristics, imaging findings, and survival</div>
+      <div class="pub-meta"><span class="pub-journal">BMC Infectious Diseases</span><span class="pub-year">2024</span></div>
+    </div>
 
-<div class="pub">
-<b>Socioeconomic Determinants of Medication Use</b><br>
-BMC Public Health (2025)
-</div>
+    <div class="pub-item">
+      <div class="pub-title">Prevalence, microbiology, and antimicrobial susceptibility profile of bacterial skin and soft tissue infections in pediatric patients with malignancies</div>
+      <div class="pub-meta"><span class="pub-journal">BMC Infectious Diseases</span><span class="pub-year">2025</span></div>
+    </div>
 
-<div class="pub">
-<b>Pediatric Cancer Infection Outcomes</b><br>
-BMC Infectious Diseases (2025)
-</div>
+    <div class="pub-item">
+      <div class="pub-title">Mortality and Treatment Outcomes in Pediatric Malignancy Patients with Invasive Cutaneous Fungal Infections</div>
+      <div class="pub-meta"><span class="pub-journal">Mycopathologia</span><span class="pub-year">2025</span></div>
+    </div>
 
-<div class="pub">
-<b>Invasive Fungal Infection Outcomes</b><br>
-Mycopathologia (2025)
-</div>
+    <div class="pub-item">
+      <div class="pub-title">Efficacy of Unilateral Deep Brain Stimulation for Gait Enhancement in Parkinson's Disease: A Systematic Review and Meta-Analysis</div>
+      <div class="pub-meta"><span class="pub-journal">Stereotactic and Functional Neurosurgery</span><span class="pub-year">2025</span></div>
+    </div>
 
-</div>
+    <div class="pub-item">
+      <div class="pub-title">Diagnostic Accuracy of Ultrasound Radiomics for Cervical Lymph-Node Metastasis in Papillary Thyroid Carcinoma</div>
+      <div class="pub-meta"><span class="pub-journal">Ultrasound in Medicine &amp; Biology</span><span class="pub-year">2026</span></div>
+    </div>
 
+    <div class="pub-item">
+      <div class="pub-title">Gram-negative gut colonization in children newly diagnosed with malignancy: microbiology, antimicrobial resistance pattern, and clinical implications</div>
+      <div class="pub-meta"><span class="pub-journal">Gut Pathogens</span><span class="pub-year">2026</span></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Association of individual and community-level socioeconomic status and education with medication use: a multilevel analysis in the PERSIAN cohort</div>
+      <div class="pub-meta"><span class="pub-journal">BMC Public Health</span><span class="pub-year">2025</span></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Investigating neutropenic enterocolitis: a systematic review of case reports and clinical insights</div>
+      <div class="pub-meta"><span class="pub-journal">BMC Gastroenterology</span><span class="pub-year">2025</span></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">Prevalence of hypoparathyroidism among patients with thalassemias: A systematic review and meta-analysis</div>
+      <div class="pub-meta"><span class="pub-journal">Acta Biomedica</span><span class="pub-year">2025</span></div>
+    </div>
+
+    <div class="pub-item">
+      <div class="pub-title">+ 8 additional peer-reviewed publications in pharmacoepidemiology, cardiology, and oncology</div>
+      <div class="pub-meta"><a href="https://scholar.google.com/citations?user=RE72N8EAAAAJ&hl=en" target="_blank" style="color:var(--accent);font-size:.77rem;">View all on Google Scholar →</a></div>
+    </div>
+
+  </div>
 </section>
 
-<!-- PROJECTS -->
-<section id="projects">
-<h2>Key Projects</h2>
-
-<div class="card">
-• EMR Implementation in Oncology Hospital<br>
-• Clinical Decision Support System (CDSS)<br>
-• Cancer Registry Development<br>
-• Healthcare AI Risk Prediction Models<br>
-• Social Network Analysis in Healthcare Systems
-</div>
-
+<!-- ── SKILLS ── -->
+<section id="skills" class="reveal">
+  <p class="section-label">Skills &amp; Tools</p>
+  <div class="skills-grid">
+    <div class="skill-group">
+      <div class="skill-group-title">Programming &amp; Analysis</div>
+      <div class="skill-tags">
+        <span class="stag">Python</span>
+        <span class="stag">Pandas</span>
+        <span class="stag">NumPy</span>
+        <span class="stag">Scikit-learn</span>
+        <span class="stag">SPSS</span>
+        <span class="stag">STATA</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Data Visualization</div>
+      <div class="skill-tags">
+        <span class="stag">Matplotlib</span>
+        <span class="stag">Plotly</span>
+        <span class="stag">Tableau</span>
+        <span class="stag">GraphPad Prism</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Network &amp; Qualitative</div>
+      <div class="skill-tags">
+        <span class="stag">Gephi</span>
+        <span class="stag">NetworkX</span>
+        <span class="stag">MAXQDA</span>
+        <span class="stag">Venism</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Other Tools</div>
+      <div class="skill-tags">
+        <span class="stag">WordPress</span>
+        <span class="stag">Django</span>
+        <span class="stag">Adobe Photoshop</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Languages</div>
+      <div class="skill-tags">
+        <span class="stag">Persian (Native)</span>
+        <span class="stag">English — IELTS 7.0</span>
+      </div>
+    </div>
+    <div class="skill-group">
+      <div class="skill-group-title">Research Methods</div>
+      <div class="skill-tags">
+        <span class="stag">Epidemiology</span>
+        <span class="stag">Biostatistics</span>
+        <span class="stag">Systematic Review</span>
+        <span class="stag">RCT Design</span>
+        <span class="stag">Stakeholder Analysis</span>
+      </div>
+    </div>
+  </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contact">
-<h2>Contact</h2>
-
-<div class="card">
-Email: <a href="mailto:Reza.abdipour96@gmail.com">Reza.abdipour96@gmail.com</a><br><br>
-
-<a class="btn" href="https://scholar.google.com">Google Scholar</a>
-<a class="btn" href="https://linkedin.com">LinkedIn</a>
-<a class="btn" href="https://researchgate.net">ResearchGate</a>
-</div>
-
+<!-- ── CONTACT ── -->
+<section id="contact" class="reveal">
+  <p class="section-label">Get in Touch</p>
+  <h2 class="section-title">Let's connect</h2>
+  <div class="contact-grid">
+    <a class="contact-item" href="mailto:Reza.abdipour96@gmail.com">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 7 10-7"/></svg>
+      Reza.abdipour96@gmail.com
+    </a>
+    <a class="contact-item" href="tel:+989389601116">
+      <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.44 10.5a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.36 2h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L7.91 9.4a16 16 0 0 0 6.29 6.29l.77-.77a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+      +98 938 960 1116
+    </a>
+    <a class="contact-item" href="https://www.linkedin.com/in/seyed-reza-abdipour-mehrian-225ab8143/" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg>
+      LinkedIn
+    </a>
+    <a class="contact-item" href="https://github.com/Rezabdipour" target="_blank">
+      <svg viewBox="0 0 24 24" fill="currentColor"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
+      GitHub
+    </a>
+  </div>
 </section>
 
-</div>
+<footer>
+  © 2026 Seyed Reza Abdipour Mehrian &nbsp;·&nbsp; rezaabdipour.ir
+</footer>
 
+<script>
+  // Scroll reveal
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.08 }
+  );
+  document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+</script>
 </body>
 </html>
